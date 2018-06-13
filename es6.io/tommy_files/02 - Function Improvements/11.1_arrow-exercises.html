@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Arrow Functions Exercises #1</title>
+  <title>#1 Arrow Functions Exercises</title>
 </head>
 
 <body>
@@ -33,29 +33,51 @@
 
 <script>
 
-// Select all the list items on the page and convert to array
-const videoTimes = Array.from(document.querySelectorAll('li'));
-// Filter for only the elements that contain the word 'flexbox'
-const filteredVideos = videoTimes.filter((title) => {
-  if (title.textContent.includes('Flexbox')) {
-    return title.textContent;
-  }
-});
-// map down to a list of time strings
-const flexVideos = filteredVideos.map((time) => {
-  return time.getAttribute('data-time');
-});
-// map to an array of seconds
-const videoSeconds = flexVideos.map((seconds) => {
-  let video = seconds.split(':');
-  let time = (+video[0]) * 60 * 60 + (+video[1]);
+  const items = Array.from(document.querySelectorAll('[data-time]'));
 
-  return time;
-});
+  const filtered = items
+    .filter((item) => item.textContent.includes('Flexbox'))
+    .map((item) => item.dataset.time)
+    .map((timecode) => {
+      const parts = timecode.split(':').map((part) => parseFloat(part));
+      return (parts[0] * 60) + parts[1];
+    })
+    .reduce((acc, seconds) => {
+      let total = acc + seconds;
+
+      return total;
+      // return (total / 3600);
+    }, 0);
+    
+// Select all the list items on the page and convert to array
+  // const videoTimes = Array.from(document.querySelectorAll('li'))
+  //                         .filter((title) => {
+  //                           if (title.textContent.includes('Flexbox')) {
+  //                             return title.textContent;
+  //                           }
+  //                         })
+  //                         .map((time) => {
+  //                           return time.getAttribute('data-time');
+  //                         })
+  //                         .map((seconds) => {
+  //                           let video = seconds.split(':');
+  //                           let time = (+video[0]) * 60 * 60 + (+video[1]);
+                            
+  //                           return time;
+  //                         })
+  //                         .reduce((acc, playTime) => {
+  //                           let totalSeconds = acc + playTime;
+                            
+  //                           return totalSeconds / 3600;
+  //                         });
+// Filter for only the elements that contain the word 'flexbox'
+
+// map down to a list of time strings
+
+// map to an array of seconds
+
 // reduce to get total
-const reduceTime = videoSeconds.reduce((acc, playTime) => {
-  return acc + playTime;
-});
+
 // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
 
 </script>
