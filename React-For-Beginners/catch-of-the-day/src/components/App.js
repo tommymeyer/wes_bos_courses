@@ -10,7 +10,7 @@ class App extends React.Component {
       <React.Fragment>
         <section className="catch-of-the-day">
           <article className="menu">
-            <Header />
+            <Header tagline="Fresh Seafood Market" />
           </article>
           <Order />
           <Inventory />
