@@ -1,4 +1,5 @@
 import React from 'react';
+import AddFishForm from "./AddFishForm";
 
 
 class Inventory extends React.Component {
@@ -6,7 +7,9 @@ class Inventory extends React.Component {
     return (
       <React.Fragment>
         <section className="inventory">
-          Inventory
+          <h2>Inventory</h2>
+
+          <AddFishForm />
         </section>
       </React.Fragment>
     )
